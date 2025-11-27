@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Default Meta Tags (Fallback) -->
+    <title>Makeover Studio | Professional Makeup Artist Malaysia</title>
+    <meta name="description" content="Premier makeup and hairdo services in Klang Valley and throughout Malaysia. We offer bridal makeup, ROM styling, and personal makeovers." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD SEO Structure -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Makeover Studio",
+      "image": "https://picsum.photos/id/338/600/800",
+      "telephone": "+60123456789",
+      "email": "hello@makeoverstudio.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kuala Lumpur",
+        "addressRegion": "Wilayah Persekutuan",
+        "addressCountry": "MY"
+      },
+      "areaServed": ["Klang Valley", "Malaysia"],
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Lato', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              gold: {
+                300: '#E5C568',
+                400: '#D4AF37',
+                500: '#B08D28',
+              },
+              stone: {
+                50: '#FAF9F6', // Alabaster
+                100: '#F5F5F0',
+                200: '#E6E6E1',
+                800: '#2C2C2A',
+                900: '#1C1C1C',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 1s ease-out',
+              'fade-in-up': 'fadeInUp 1s ease-out forwards',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-helmet-async": "https://aistudiocdn.com/react-helmet-async@^2.0.4",
+    "next": "https://aistudiocdn.com/next@^16.0.5",
+    "next/": "https://aistudiocdn.com/next@^16.0.5/"
+  }
+}
+</script>
+  </head>
+  <body class="antialiased bg-stone-50 text-stone-900 selection:bg-gold-200 selection:text-black">
+    <div id="root"></div>
+  </body>
+</html>
