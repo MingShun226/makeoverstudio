@@ -91,8 +91,9 @@ function App() {
         return (
           <>
             <SEO
-              title="Services & Packages"
-              description="Explore our Bridal, ROM, and Personal Makeover packages. Competitive rates for high-end styling."
+              title="Professional Makeup Services Malaysia | Bridal, ROM & Personal"
+              description="Comprehensive makeup and styling services in Klang Valley. Specializing in bridal makeup, ROM styling, and personal makeovers. 5+ years experience, mobile services, 24/7 booking available."
+              keywords="makeup services Malaysia, professional makeup artist, bridal makeup Klang Valley, ROM makeup, personal makeover, mobile makeup artist, door-to-door makeup services"
               path="?page=services"
             />
             <Services onNavigate={handleNavigate} />

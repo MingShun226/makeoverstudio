@@ -110,95 +110,130 @@ const Services: React.FC<ServicesProps> = ({ preview, onNavigate }) => {
             </div>
           </>
         ) : (
-          // Full Page Layout
-          <>
-            <div className="text-center mb-12 md:mb-20">
-              <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Services</span>
-              <h2 className="text-4xl md:text-5xl font-serif text-stone-900">Packages & Rates</h2>
-              
-              {/* Category Tabs */}
-              <div className="flex flex-wrap justify-center gap-4 md:gap-12 mt-12 border-b border-stone-200">
-                {SERVICE_CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={`text-sm md:text-base font-serif italic pb-4 px-4 transition-all duration-300 relative ${
-                      activeCategory === cat.id 
-                        ? 'text-stone-900 border-b-2 border-gold-400' 
-                        : 'text-stone-400 hover:text-stone-600'
-                    }`}
-                  >
-                    {cat.title}
-                  </button>
-                ))}
+          // Full Services Overview Page
+          <div className="min-h-screen bg-white">
+            {/* Hero Section */}
+            <section className="relative bg-stone-900 py-24 md:py-32">
+              <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 opacity-90"></div>
+              <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
+                <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Our Services</span>
+                <h1 className="text-5xl md:text-6xl font-serif text-white mb-6 leading-tight">
+                  Professional Makeup & Styling Services
+                </h1>
+                <p className="text-white/90 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                  From bridal elegance to personal makeovers, we offer comprehensive beauty services across Klang Valley and Malaysia. Each service is tailored to enhance your natural beauty and confidence.
+                </p>
               </div>
-            </div>
+            </section>
 
-            <div className="animate-fade-in-up">
-              <div className="text-center mb-16 max-w-2xl mx-auto px-4">
-                <p className="text-stone-500 font-light leading-relaxed text-lg">{activeData.description}</p>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-                {activeData.services.map((service) => (
-                  <div key={service.id} className="bg-stone-50 border border-stone-100 p-8 md:p-12 flex flex-col relative group hover:shadow-xl transition-all duration-300 rounded-sm">
-                    {/* Decorative Top Line */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-transparent group-hover:bg-gold-400 transition-colors duration-300"></div>
-
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-                      <div>
-                        <span className="text-[10px] font-bold tracking-widest uppercase text-gold-500 mb-2 block">
-                          {service.subtitle}
-                        </span>
-                        <h3 className="text-3xl md:text-4xl font-serif italic text-stone-900">{service.title}</h3>
-                      </div>
-                      <div className="mt-4 md:mt-0 text-left md:text-right">
-                         <div className="text-2xl md:text-3xl font-serif text-stone-900">{service.price}</div>
-                         {service.secondaryPrice && (
-                           <div className="text-sm md:text-base font-serif text-stone-500 italic mt-1">{service.secondaryPrice}</div>
-                         )}
-                      </div>
-                    </div>
-                    
-                    {/* Features List */}
-                    <ul className="space-y-4 mb-8 flex-grow">
-                        {service.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start text-sm md:text-base text-stone-600 font-light group-hover:text-stone-900 transition-colors">
-                                <span className="mr-4 mt-1.5 flex h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold-400" />
-                                <span className="leading-relaxed">{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-
-                    {/* Add Ons & Notes */}
-                    {(service.addOns || service.notes) && (
-                      <div className="border-t border-stone-200 pt-6 mt-auto">
-                        {service.addOns?.map((addon, idx) => (
-                          <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between text-sm mb-3 text-stone-700 bg-white p-4 rounded-sm border border-stone-100 shadow-sm">
-                             <div className="flex items-center mb-2 sm:mb-0">
-                               <Plus size={14} className="text-gold-400 mr-2" />
-                               <span className="font-medium tracking-wide">Add-on: {addon.title}</span>
-                             </div>
-                             <span className="font-serif italic text-gold-600">{addon.price}</span>
-                          </div>
-                        ))}
-                        
-                        {service.notes && (
-                           <div className="flex flex-wrap gap-2 mt-4">
-                             {service.notes.map((note, idx) => (
-                               <span key={idx} className="text-[10px] uppercase tracking-wider text-stone-400 border border-stone-200 px-3 py-1 rounded-full">
-                                 {note}
-                               </span>
-                             ))}
-                           </div>
-                        )}
-                      </div>
-                    )}
+            {/* Introduction Section */}
+            <section className="py-16 md:py-20 bg-stone-50">
+              <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
+                <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-6">
+                  Why Choose Makeover Studio?
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                  <div className="text-center">
+                    <div className="text-gold-400 text-4xl font-serif mb-4">5+</div>
+                    <h3 className="text-lg font-bold uppercase tracking-wide text-stone-900 mb-2">Years Experience</h3>
+                    <p className="text-stone-600 font-light text-sm">Professional makeup artists with extensive industry experience</p>
                   </div>
-                ))}
+                  <div className="text-center">
+                    <div className="text-gold-400 text-4xl font-serif mb-4">24/7</div>
+                    <h3 className="text-lg font-bold uppercase tracking-wide text-stone-900 mb-2">Availability</h3>
+                    <p className="text-stone-600 font-light text-sm">Accept appointments anytime to fit your schedule</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-gold-400 text-4xl font-serif mb-4">100%</div>
+                    <h3 className="text-lg font-bold uppercase tracking-wide text-stone-900 mb-2">Door-to-Door</h3>
+                    <p className="text-stone-600 font-light text-sm">Mobile services across Klang Valley and Malaysia</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </>
+            </section>
+
+            {/* Service Categories Section */}
+            <section className="py-24 md:py-32">
+              <div className="max-w-7xl mx-auto px-6 md:px-12">
+                <div className="text-center mb-16">
+                  <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Explore Our Services</span>
+                  <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">
+                    Choose Your Perfect Service
+                  </h2>
+                  <p className="text-stone-500 font-light max-w-2xl mx-auto text-lg">
+                    Select a service category below to view detailed packages, pricing, and our portfolio of work
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                  {SERVICE_CATEGORIES.map((category) => {
+                    const coverImage = category.services[0]?.image;
+                    const startingPrice = category.services[0]?.price;
+
+                    return (
+                      <button
+                        key={category.id}
+                        onClick={() => handleNavClick(`/${category.id}`)}
+                        className="group cursor-pointer flex flex-col text-left bg-white border border-stone-100 hover:border-gold-400 transition-all duration-300 overflow-hidden"
+                      >
+                        <div className="relative overflow-hidden aspect-[4/5] bg-stone-100">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                          <img
+                            src={coverImage}
+                            alt={category.title}
+                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                          />
+                          <div className="absolute bottom-6 left-6 right-6 z-20">
+                            <span className="text-gold-400 text-xs font-bold tracking-widest uppercase block mb-2">
+                              Category 0{SERVICE_CATEGORIES.indexOf(category) + 1}
+                            </span>
+                            <h3 className="text-3xl font-serif text-white mb-2 group-hover:text-gold-400 transition-colors">
+                              {category.title}
+                            </h3>
+                          </div>
+                        </div>
+
+                        <div className="p-6 md:p-8 flex flex-col flex-grow">
+                          <p className="text-stone-600 font-light leading-relaxed mb-6 flex-grow">
+                            {category.description}
+                          </p>
+
+                          <div className="border-t border-stone-100 pt-6 flex items-center justify-between">
+                            <div>
+                              <span className="text-xs text-stone-500 uppercase tracking-wider block mb-1">Starting From</span>
+                              <span className="text-xl font-serif text-stone-900">
+                                {startingPrice.split(' ')[0]} {startingPrice.split(' ')[1]}
+                              </span>
+                            </div>
+                            <div className="w-12 h-12 rounded-full bg-stone-50 group-hover:bg-gold-400 flex items-center justify-center transition-all">
+                              <ArrowRight size={20} className="text-stone-400 group-hover:text-white transition-colors" />
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+
+            {/* Call to Action */}
+            <section className="py-20 bg-stone-900 text-white">
+              <div className="max-w-4xl mx-auto text-center px-6">
+                <h2 className="text-4xl md:text-5xl font-serif mb-6">Ready to Book?</h2>
+                <p className="text-white/80 text-lg mb-8 font-light">
+                  Contact us today to discuss your beauty needs and schedule an appointment
+                </p>
+                <button
+                  onClick={() => window.open('https://wa.me/60123456789', '_blank')}
+                  className="bg-gold-400 text-white px-10 py-4 text-sm font-bold tracking-[0.15em] uppercase hover:bg-gold-500 transition-all duration-300 inline-flex items-center gap-3"
+                >
+                  <span>WhatsApp Us Now</span>
+                  <ArrowRight size={18} />
+                </button>
+              </div>
+            </section>
+          </div>
         )}
       </div>
     </section>
