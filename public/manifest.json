@@ -1,0 +1,27 @@
+{
+  "name": "Makeover Studio - Professional Makeup Artist Malaysia",
+  "short_name": "Makeover Studio",
+  "description": "Premier makeup and hairdo services in Klang Valley and throughout Malaysia. Professional bridal makeup, ROM styling, and personal makeovers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["beauty", "lifestyle", "business"],
+  "lang": "en-MY",
+  "dir": "ltr"
+}

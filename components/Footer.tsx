@@ -1,9 +1,18 @@
 import React from 'react';
-import Link from 'next/link';
 import { SERVICE_CATEGORIES, WHATSAPP_LINK, CONTACT_INFO } from '../constants';
 import { Instagram, Facebook, Mail, MapPin, Phone, Clock } from 'lucide-react';
+import { PageView } from '../App';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: PageView, category?: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const handleNavClick = (path: string, category?: string) => {
+    const page = (path === '/' ? 'home' : path.slice(1)) as PageView;
+    onNavigate(page, category);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <footer className="bg-stone-900 text-stone-400 border-t border-stone-800">
       {/* Main Footer Content */}
@@ -35,23 +44,23 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {SERVICE_CATEGORIES.map((cat) => (
                 <li key={cat.id}>
-                  <Link 
-                    href={`/services?category=${cat.id}`}
+                  <button
+                    onClick={() => handleNavClick('/services', cat.id)}
                     className="text-sm font-light hover:text-gold-400 transition-colors flex items-center gap-2"
                   >
                     <span className="w-1 h-1 bg-stone-600 rounded-full"></span>
                     {cat.title}
-                  </Link>
+                  </button>
                 </li>
               ))}
               <li>
-                <Link 
-                   href="/gallery"
+                <button
+                   onClick={() => handleNavClick('/gallery')}
                    className="text-sm font-light hover:text-gold-400 transition-colors flex items-center gap-2"
                 >
                    <span className="w-1 h-1 bg-stone-600 rounded-full"></span>
                    Portfolio Showcase
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -60,9 +69,9 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Studio</h3>
             <ul className="space-y-4">
-              <li><Link href="/" className="text-sm font-light hover:text-gold-400 transition-colors">Home</Link></li>
-              <li><Link href="/about" className="text-sm font-light hover:text-gold-400 transition-colors">About</Link></li>
-              <li><Link href="/contact" className="text-sm font-light hover:text-gold-400 transition-colors">Contact</Link></li>
+              <li><button onClick={() => handleNavClick('/')} className="text-sm font-light hover:text-gold-400 transition-colors">Home</button></li>
+              <li><button onClick={() => handleNavClick('/about')} className="text-sm font-light hover:text-gold-400 transition-colors">About</button></li>
+              <li><button onClick={() => handleNavClick('/contact')} className="text-sm font-light hover:text-gold-400 transition-colors">Contact</button></li>
               <li>
                  <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="text-sm font-light hover:text-gold-400 transition-colors">
                     Book Appointment

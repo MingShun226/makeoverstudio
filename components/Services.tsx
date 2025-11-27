@@ -1,26 +1,31 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { SERVICE_CATEGORIES } from '../constants';
 import { CategoryId } from '../types';
 import { ArrowRight, Plus } from 'lucide-react';
+import { PageView } from '../App';
 
 interface ServicesProps {
   preview?: boolean;
+  onNavigate?: (page: PageView, category?: string) => void;
 }
 
-const Services: React.FC<ServicesProps> = ({ preview }) => {
-  const searchParams = useSearchParams();
+const Services: React.FC<ServicesProps> = ({ preview, onNavigate }) => {
+  const handleNavClick = (path: string, category?: string) => {
+    if (onNavigate) {
+      const page = (path === '/' ? 'home' : path.slice(1)) as PageView;
+      onNavigate(page, category);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
   const [activeCategory, setActiveCategory] = useState<CategoryId>('bridal');
 
   useEffect(() => {
-    const categoryParam = searchParams.get('category') as CategoryId;
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get('category') as CategoryId;
     if (categoryParam && SERVICE_CATEGORIES.some(c => c.id === categoryParam)) {
       setActiveCategory(categoryParam);
     }
-  }, [searchParams]);
+  }, []);
 
   const activeData = SERVICE_CATEGORIES.find(c => c.id === activeCategory) || SERVICE_CATEGORIES[0];
 
@@ -32,17 +37,17 @@ const Services: React.FC<ServicesProps> = ({ preview }) => {
           <>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16">
               <div className="max-w-2xl">
-                <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Our Expertise</span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-stone-900 leading-[1.1]">
-                  Curated Beauty <br/> <span className="italic text-stone-400">Services.</span>
+                <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Our Services</span>
+                <h2 className="text-4xl md:text-5xl font-serif text-stone-900 leading-tight">
+                  Bridal Makeup & Styling Packages
                 </h2>
               </div>
-              <Link 
-                href="/services"
+              <button
+                onClick={() => handleNavClick('/services')}
                 className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-gold-400 transition-all duration-300 mt-6 md:mt-0"
               >
                 View All Packages <ArrowRight size={14} />
-              </Link>
+              </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
@@ -51,10 +56,10 @@ const Services: React.FC<ServicesProps> = ({ preview }) => {
                 const startingPrice = category.services[0]?.price;
 
                 return (
-                  <Link 
-                    key={category.id} 
-                    href={`/services?category=${category.id}`}
-                    className="group cursor-pointer flex flex-col"
+                  <button
+                    key={category.id}
+                    onClick={() => handleNavClick(`/${category.id}`)}
+                    className="group cursor-pointer flex flex-col text-left"
                   >
                     <div className="relative overflow-hidden aspect-[2/1] md:aspect-[4/5] mb-6 md:mb-8 bg-stone-100">
                       <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/0 transition-all duration-500 z-10"></div>
@@ -90,26 +95,26 @@ const Services: React.FC<ServicesProps> = ({ preview }) => {
                          <ArrowRight size={16} className="text-stone-300 group-hover:text-gold-400 transform group-hover:translate-x-1 transition-all" />
                       </div>
                     </div>
-                  </Link>
+                  </button>
                 );
               })}
             </div>
 
             <div className="mt-12 text-center md:hidden">
-               <Link 
-                  href="/services"
+               <button
+                  onClick={() => handleNavClick('/services')}
                   className="inline-block border border-stone-900 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-stone-900 hover:text-white transition-colors"
                 >
                   View All Services
-                </Link>
+                </button>
             </div>
           </>
         ) : (
           // Full Page Layout
           <>
             <div className="text-center mb-12 md:mb-20">
-              <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase">Services</span>
-              <h2 className="text-5xl md:text-7xl font-serif mt-4 text-stone-900 italic">Packages & Rates</h2>
+              <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Services</span>
+              <h2 className="text-4xl md:text-5xl font-serif text-stone-900">Packages & Rates</h2>
               
               {/* Category Tabs */}
               <div className="flex flex-wrap justify-center gap-4 md:gap-12 mt-12 border-b border-stone-200">

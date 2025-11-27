@@ -1,3 +1,9 @@
-// This file is deprecated. The project has been migrated to Next.js.
-// Please refer to the app/ directory for the new structure.
-export default function Deprecated() { return null; }
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

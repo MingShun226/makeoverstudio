@@ -2,12 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Default Meta Tags (Fallback) -->
     <title>Makeover Studio | Professional Makeup Artist Malaysia</title>
     <meta name="description" content="Premier makeup and hairdo services in Klang Valley and throughout Malaysia. We offer bridal makeup, ROM styling, and personal makeovers." />
-    
+    <meta name="keywords" content="makeup artist Malaysia, bridal makeup Kuala Lumpur, ROM hairdo, makeup services Klang Valley, professional makeup artist, wedding makeup Malaysia" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Makeover Studio" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#D4AF37" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+
+    <!-- Open Graph Meta Tags (Fallback) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Makeover Studio" />
+    <meta property="og:title" content="Makeover Studio | Professional Makeup Artist Malaysia" />
+    <meta property="og:description" content="Premier makeup and hairdo services in Klang Valley and throughout Malaysia. We offer bridal makeup, ROM styling, and personal makeovers." />
+    <meta property="og:image" content="https://picsum.photos/id/338/1200/630" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.makeover-studio.com" />
+    <meta property="og:locale" content="en_MY" />
+
+    <!-- Twitter Card Meta Tags (Fallback) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Makeover Studio | Professional Makeup Artist Malaysia" />
+    <meta name="twitter:description" content="Premier makeup and hairdo services in Klang Valley and throughout Malaysia." />
+    <meta name="twitter:image" content="https://picsum.photos/id/338/1200/630" />
+    <meta name="twitter:site" content="@makeoverstudio" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,17 +50,42 @@
       "@context": "https://schema.org",
       "@type": "BeautySalon",
       "name": "Makeover Studio",
-      "image": "https://picsum.photos/id/338/600/800",
+      "description": "Premier makeup and hairdo services in Klang Valley and throughout Malaysia. We offer bridal makeup, ROM styling, and personal makeovers.",
+      "url": "https://www.makeover-studio.com",
+      "logo": "https://picsum.photos/id/338/600/800",
+      "image": "https://picsum.photos/id/338/1200/630",
       "telephone": "+60123456789",
       "email": "hello@makeoverstudio.com",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Kuala Lumpur",
         "addressLocality": "Kuala Lumpur",
         "addressRegion": "Wilayah Persekutuan",
+        "postalCode": "50000",
         "addressCountry": "MY"
       },
-      "areaServed": ["Klang Valley", "Malaysia"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "3.139003",
+        "longitude": "101.686855"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Kuala Lumpur"
+        },
+        {
+          "@type": "State",
+          "name": "Selangor"
+        },
+        {
+          "@type": "Place",
+          "name": "Klang Valley"
+        }
+      ],
       "priceRange": "$$",
+      "currenciesAccepted": "MYR",
+      "paymentAccepted": "Cash, Credit Card, Online Transfer",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -37,6 +93,45 @@
           "opens": "00:00",
           "closes": "23:59"
         }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Makeup Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bridal Makeup",
+              "description": "Professional bridal makeup services for your special day"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "ROM Makeup & Hairdo",
+              "description": "Registration of Marriage makeup and hairstyling services"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Personal Makeover",
+              "description": "Personal makeup and styling for any occasion"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127"
+      },
+      "sameAs": [
+        "https://www.facebook.com/makeoverstudio",
+        "https://www.instagram.com/makeoverstudio"
       ]
     }
     </script>
@@ -83,21 +178,9 @@
         }
       }
     </script>
-    <script type="importmap">
-{
-  "imports": {
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react-helmet-async": "https://aistudiocdn.com/react-helmet-async@^2.0.4",
-    "next": "https://aistudiocdn.com/next@^16.0.5",
-    "next/": "https://aistudiocdn.com/next@^16.0.5/"
-  }
-}
-</script>
   </head>
   <body class="antialiased bg-stone-50 text-stone-900 selection:bg-gold-200 selection:text-black">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

@@ -1,12 +1,13 @@
 import React from 'react';
-import Link from 'next/link';
 import { TEAM } from '../constants';
+import { PageView } from '../App';
 
 interface AboutProps {
   preview?: boolean;
+  onNavigate?: (page: PageView, category?: string) => void;
 }
 
-const About: React.FC<AboutProps> = ({ preview }) => {
+const About: React.FC<AboutProps> = ({ preview, onNavigate }) => {
   return (
     <section className="py-24 md:py-32 bg-stone-50">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -23,24 +24,27 @@ const About: React.FC<AboutProps> = ({ preview }) => {
           
           <div className="order-1 lg:order-2">
             <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Welcome</span>
-            <h2 className="text-5xl md:text-6xl font-serif text-stone-900 mb-8 italic leading-tight">
-              One-stop makeup <br/>service.
+            <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-8 leading-tight">
+              Professional Makeup Artists with 5+ Years Experience
             </h2>
-            <div className="space-y-6 text-stone-600 font-light leading-relaxed text-lg">
+            <div className="space-y-6 text-stone-600 font-light leading-relaxed text-base">
               <p>
-                We provide one-stop makeup service and can accept appointments 24/7. Our professional makeup artists have more than 5 years of service experience and can provide you with professional skills to ensure you transform into a fresh and radiant version of yourself.
+                We provide one-stop makeup service and can accept appointments 24/7. Our professional makeup artists have more than 5 years of service experience, ensuring you transform into a fresh and radiant version of yourself.
               </p>
               <p>
-                We are not only based in Kuala Lumpur & Selangor; we also provide door-to-door makeup and hairdo services across Klang Valley & throughout Malaysia. Our artists take what you want and offer their experience, advice, and technical skill.
+                Based in Kuala Lumpur & Selangor, we provide door-to-door makeup and hairdo services across Klang Valley & throughout Malaysia. Our artists combine your vision with their expertise, advice, and technical skills.
               </p>
             </div>
-            {preview && (
-               <Link 
-               href="/about"
+            {preview && onNavigate && (
+               <button
+               onClick={() => {
+                 onNavigate('about');
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+               }}
                className="mt-10 inline-block border-b border-stone-900 pb-1 text-xs uppercase tracking-widest hover:text-gold-400 hover:border-gold-400 transition-colors"
              >
                Meet the Team
-             </Link>
+             </button>
             )}
           </div>
         </div>
