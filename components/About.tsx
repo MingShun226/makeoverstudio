@@ -12,22 +12,24 @@ const About: React.FC<AboutProps> = ({ preview, onNavigate }) => {
     <section className="py-24 md:py-32 bg-stone-50">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Intro Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-24">
           <div className="order-2 lg:order-1 relative">
-            <div className="absolute -top-4 -left-4 w-full h-full border border-gold-400/30 hidden md:block"></div>
-            <img 
-              src="https://picsum.photos/id/129/600/800" 
-              alt="Studio Interior" 
-              className="w-full h-[600px] object-cover relative z-10 shadow-lg"
-            />
+            <div className="absolute -top-4 -left-4 w-full h-full border border-gold-400/30 hidden lg:block"></div>
+            <div className="relative z-10 shadow-lg overflow-hidden">
+              <img
+                src="https://picsum.photos/id/129/600/800"
+                alt="Studio Interior"
+                className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover object-center"
+              />
+            </div>
           </div>
-          
+
           <div className="order-1 lg:order-2">
             <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Welcome</span>
-            <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-8 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-stone-900 mb-6 md:mb-8 leading-tight">
               Professional Makeup Artists with 5+ Years Experience
             </h2>
-            <div className="space-y-6 text-stone-600 font-light leading-relaxed text-base">
+            <div className="space-y-4 md:space-y-6 text-stone-600 font-light leading-relaxed text-sm md:text-base">
               <p>
                 We provide one-stop makeup service and can accept appointments 24/7. Our professional makeup artists have more than 5 years of service experience, ensuring you transform into a fresh and radiant version of yourself.
               </p>
@@ -41,7 +43,7 @@ const About: React.FC<AboutProps> = ({ preview, onNavigate }) => {
                  onNavigate('about');
                  window.scrollTo({ top: 0, behavior: 'smooth' });
                }}
-               className="mt-10 inline-block border-b border-stone-900 pb-1 text-xs uppercase tracking-widest hover:text-gold-400 hover:border-gold-400 transition-colors"
+               className="mt-8 md:mt-10 inline-block border-b border-stone-900 pb-1 text-xs uppercase tracking-widest hover:text-gold-400 hover:border-gold-400 transition-colors"
              >
                Meet the Team
              </button>

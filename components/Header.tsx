@@ -166,12 +166,19 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 bg-stone-50 z-40 flex flex-col justify-center items-center transition-opacity duration-500 ease-in-out ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      <div
+        className={`fixed top-0 left-0 right-0 bottom-0 bg-stone-50 flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${
+          mobileMenuOpen ? 'opacity-100 visible z-40' : 'opacity-0 invisible -z-10'
         }`}
+        style={{
+          position: 'fixed',
+          height: '100vh',
+          height: '100dvh',
+          width: '100vw',
+          overflow: 'hidden'
+        }}
       >
-        <nav className="flex flex-col space-y-6 text-center max-h-[80vh] overflow-y-auto px-6">
+        <nav className="flex flex-col space-y-6 text-center w-full px-6 py-8 overflow-y-auto" style={{ maxHeight: '80vh' }}>
           {navLinks.map((link) => (
             <div key={link.name}>
                <button
@@ -179,7 +186,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
                   handleNavClick(link.path);
                   setMobileMenuOpen(false);
                 }}
-                className="text-3xl font-serif italic text-stone-900 hover:text-gold-400 transition-colors"
+                className="text-2xl md:text-3xl font-serif italic text-stone-900 hover:text-gold-400 transition-colors block w-full"
               >
                 {link.name}
               </button>
@@ -192,7 +199,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
                         handleNavClick(service.path);
                         setMobileMenuOpen(false);
                       }}
-                      className="text-xs uppercase tracking-widest text-stone-500"
+                      className="text-xs uppercase tracking-widest text-stone-500 hover:text-gold-400 transition-colors"
                     >
                       {service.name}
                     </button>
@@ -201,12 +208,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
               )}
             </div>
           ))}
-          <button 
+          <button
             onClick={() => {
               handleWhatsApp();
               setMobileMenuOpen(false);
             }}
-            className="text-lg font-bold uppercase tracking-[0.25em] text-gold-400 border-b border-gold-400 pb-2 inline-block mx-auto mt-8"
+            className="text-base font-bold uppercase tracking-[0.2em] text-gold-400 border border-gold-400 px-6 py-3 inline-block mx-auto mt-8 hover:bg-gold-400 hover:text-white transition-colors"
           >
             Book on WhatsApp
           </button>

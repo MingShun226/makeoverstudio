@@ -50,7 +50,7 @@ const Services: React.FC<ServicesProps> = ({ preview, onNavigate }) => {
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
               {SERVICE_CATEGORIES.map((category) => {
                 const coverImage = category.services[0]?.image;
                 const startingPrice = category.services[0]?.price;
@@ -59,40 +59,40 @@ const Services: React.FC<ServicesProps> = ({ preview, onNavigate }) => {
                   <button
                     key={category.id}
                     onClick={() => handleNavClick(`/${category.id}`)}
-                    className="group cursor-pointer flex flex-col text-left"
+                    className="group cursor-pointer flex flex-col text-left bg-white border-2 border-stone-200 hover:border-gold-400 transition-all duration-300 shadow-md hover:shadow-xl"
                   >
-                    <div className="relative overflow-hidden aspect-[2/1] md:aspect-[4/5] mb-6 md:mb-8 bg-stone-100">
-                      <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/0 transition-all duration-500 z-10"></div>
-                      <img 
-                        src={coverImage} 
-                        alt={category.title} 
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                    <div className="relative overflow-hidden aspect-[3/2] md:aspect-[4/5] bg-stone-100">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+                      <img
+                        src={coverImage}
+                        alt={category.title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 bg-white/90 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-sm">
+                      <div className="absolute top-4 left-4 z-20 bg-gold-400 text-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                        Category 0{SERVICE_CATEGORIES.indexOf(category) + 1}
+                      </div>
+                      <div className="absolute bottom-4 right-4 z-20 bg-white/95 backdrop-blur-sm px-4 py-2 text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-sm">
                         View Details
                       </div>
                     </div>
-                    
-                    <div className="flex flex-col flex-grow">
-                      <div className="flex justify-between items-baseline mb-2 md:mb-3">
-                        <span className="text-[10px] font-bold tracking-widest uppercase text-gold-500">
-                          Category 0{SERVICE_CATEGORIES.indexOf(category) + 1}
-                        </span>
-                      </div>
-                      
-                      <h3 className="text-2xl md:text-3xl font-serif italic text-stone-900 mb-2 md:mb-3 group-hover:text-gold-500 transition-colors">
+
+                    <div className="flex flex-col flex-grow p-6 md:p-8">
+                      <h3 className="text-2xl md:text-3xl font-serif italic text-stone-900 mb-3 md:mb-4 group-hover:text-gold-500 transition-colors">
                         {category.title}
                       </h3>
-                      
-                      <p className="text-stone-500 font-light text-sm leading-relaxed mb-4 line-clamp-2 md:line-clamp-3">
+
+                      <p className="text-stone-600 font-light text-sm md:text-base leading-relaxed mb-6 flex-grow">
                         {category.description}
                       </p>
 
-                      <div className="mt-auto pt-4 border-t border-stone-100 flex items-center justify-between">
-                         <span className="text-stone-900 font-serif italic text-lg">
-                           From {startingPrice.split(' ')[0]} {startingPrice.split(' ')[1]}
-                         </span>
-                         <ArrowRight size={16} className="text-stone-300 group-hover:text-gold-400 transform group-hover:translate-x-1 transition-all" />
+                      <div className="mt-auto pt-6 border-t border-stone-200 flex items-center justify-between">
+                         <div>
+                           <span className="text-[10px] text-stone-500 uppercase tracking-wider block mb-1">Starting From</span>
+                           <span className="text-stone-900 font-serif text-xl md:text-2xl">
+                             {startingPrice.split(' ')[0]} {startingPrice.split(' ')[1]}
+                           </span>
+                         </div>
+                         <ArrowRight size={20} className="text-stone-400 group-hover:text-gold-400 transform group-hover:translate-x-1 transition-all" />
                       </div>
                     </div>
                   </button>
@@ -153,19 +153,19 @@ const Services: React.FC<ServicesProps> = ({ preview, onNavigate }) => {
             </section>
 
             {/* Service Categories Section */}
-            <section className="py-24 md:py-32">
+            <section className="py-16 md:py-24 lg:py-32">
               <div className="max-w-7xl mx-auto px-6 md:px-12">
-                <div className="text-center mb-16">
+                <div className="text-center mb-12 md:mb-16">
                   <span className="text-gold-400 text-xs font-bold tracking-[0.25em] uppercase block mb-4">Explore Our Services</span>
-                  <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-stone-900 mb-4 md:mb-6">
                     Choose Your Perfect Service
                   </h2>
-                  <p className="text-stone-500 font-light max-w-2xl mx-auto text-lg">
+                  <p className="text-stone-500 font-light max-w-2xl mx-auto text-sm md:text-base lg:text-lg">
                     Select a service category below to view detailed packages, pricing, and our portfolio of work
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
                   {SERVICE_CATEGORIES.map((category) => {
                     const coverImage = category.services[0]?.image;
                     const startingPrice = category.services[0]?.price;
@@ -174,38 +174,38 @@ const Services: React.FC<ServicesProps> = ({ preview, onNavigate }) => {
                       <button
                         key={category.id}
                         onClick={() => handleNavClick(`/${category.id}`)}
-                        className="group cursor-pointer flex flex-col text-left bg-white border border-stone-100 hover:border-gold-400 transition-all duration-300 overflow-hidden"
+                        className="group cursor-pointer flex flex-col text-left bg-white border-2 border-stone-200 hover:border-gold-400 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-2xl"
                       >
-                        <div className="relative overflow-hidden aspect-[4/5] bg-stone-100">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                        <div className="relative overflow-hidden aspect-[3/2] md:aspect-[4/5] bg-stone-100">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"></div>
                           <img
                             src={coverImage}
                             alt={category.title}
                             className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                           />
-                          <div className="absolute bottom-6 left-6 right-6 z-20">
-                            <span className="text-gold-400 text-xs font-bold tracking-widest uppercase block mb-2">
-                              Category 0{SERVICE_CATEGORIES.indexOf(category) + 1}
-                            </span>
-                            <h3 className="text-3xl font-serif text-white mb-2 group-hover:text-gold-400 transition-colors">
+                          <div className="absolute top-4 left-4 z-20 bg-gold-400 text-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                            Category 0{SERVICE_CATEGORIES.indexOf(category) + 1}
+                          </div>
+                          <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-20">
+                            <h3 className="text-2xl md:text-3xl font-serif text-white mb-1 md:mb-2 group-hover:text-gold-400 transition-colors">
                               {category.title}
                             </h3>
                           </div>
                         </div>
 
                         <div className="p-6 md:p-8 flex flex-col flex-grow">
-                          <p className="text-stone-600 font-light leading-relaxed mb-6 flex-grow">
+                          <p className="text-stone-600 font-light text-sm md:text-base leading-relaxed mb-6 flex-grow">
                             {category.description}
                           </p>
 
-                          <div className="border-t border-stone-100 pt-6 flex items-center justify-between">
+                          <div className="border-t border-stone-200 pt-6 flex items-center justify-between">
                             <div>
-                              <span className="text-xs text-stone-500 uppercase tracking-wider block mb-1">Starting From</span>
-                              <span className="text-xl font-serif text-stone-900">
+                              <span className="text-[10px] text-stone-500 uppercase tracking-wider block mb-1">Starting From</span>
+                              <span className="text-xl md:text-2xl font-serif text-stone-900">
                                 {startingPrice.split(' ')[0]} {startingPrice.split(' ')[1]}
                               </span>
                             </div>
-                            <div className="w-12 h-12 rounded-full bg-stone-50 group-hover:bg-gold-400 flex items-center justify-center transition-all">
+                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-stone-100 group-hover:bg-gold-400 flex items-center justify-center transition-all">
                               <ArrowRight size={20} className="text-stone-400 group-hover:text-white transition-colors" />
                             </div>
                           </div>
